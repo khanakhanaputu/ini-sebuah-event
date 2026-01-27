@@ -53,3 +53,22 @@ class Organizer(Base):
         back_populates='organizer'
     )
 
+    events = relationship(
+        'Event',
+        back_populates='organizer'
+    )
+
+    orders = relationship(
+        'Order',
+        back_populates='organizer'
+    )
+
+    payouts = relationship(
+        'Payout',
+        back_populates='organizer'
+    )
+
+    promo_codes = relationship(
+        'PromoCode',
+        back_populates='organizer'
+    )

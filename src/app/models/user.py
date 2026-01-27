@@ -92,3 +92,37 @@ class User(Base):
         'OrganizerMember',
         back_populates='user'
     )
+
+    profile = relationship(
+        'Profile',
+        back_populates='user',
+        uselist=False
+    )
+
+    created_events = relationship(
+        'Event',
+        foreign_keys='Event.created_by',
+        back_populates='creator'
+    )
+
+    submitted_approvals = relationship(
+        'EventApproval',
+        foreign_keys='EventApproval.submitted_by',
+        back_populates='submitter'
+    )
+
+    decided_approvals = relationship(
+        'EventApproval',
+        foreign_keys='EventApproval.decided_by',
+        back_populates='decider'
+    )
+
+    orders = relationship(
+        'Order',
+        back_populates='buyer'
+    )
+
+    checkins = relationship(
+        'Checkin',
+        back_populates='gate_user'
+    )
