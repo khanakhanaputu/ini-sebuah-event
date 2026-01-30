@@ -13,7 +13,7 @@ class Role(str, enum.Enum):
     VIEWER = 'viewer'
 
 class Status(str, enum.Enum):
-    ACTIVE = 'acitve'
+    ACTIVE = 'active'
     INACTIVE = 'inactive'
 
 class OrganizerMember(Base):
@@ -63,4 +63,3 @@ class OrganizerMember(Base):
         'Organizer',
         back_populates='organizer_member'
     )
-
