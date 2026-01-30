@@ -23,57 +23,44 @@ class User(Base):
         primary_key=True,
     )
 
-    username: Mapped[str] = mapped_column(
-        VARCHAR(120),
+    google_id: Mapped[str] = mapped_column(
+        VARCHAR(255),
         unique=True,
-        nullable=False
+        index=True
     )
 
     email: Mapped[str] = mapped_column(
-        VARCHAR(190),
+        VARCHAR(100),
         unique=True,
-        nullable=False
+        index=True
     )
 
-    phone: Mapped[str] = mapped_column(
-        VARCHAR(20),
-        nullable=True
-    )
-
-    password_hash: Mapped[str] = mapped_column(
+    full_name: Mapped[str] = mapped_column(
         VARCHAR(255),
         nullable=True
     )
 
-    platform_role: Mapped[str] = mapped_column(
+    avatar: Mapped[str] = mapped_column(
+        VARCHAR(255),
+        nullable=True
+    )
+
+    role: Mapped[str] = mapped_column(
         ENUM(PlatformRole, name='platform_roles'),
         nullable=False,
         default='user'
     )
 
-    email_verified_at: Mapped[datetime] = mapped_column(
-        DATETIME,
+    phone_number: Mapped[str] = mapped_column(
+        VARCHAR(20),
         nullable=True
     )
 
-    status: Mapped[str] = mapped_column(
+    user_status: Mapped[str] = mapped_column(
         ENUM(UserStatus, name='user_status'),
-        default='active',
-        nullable=False
+        nullable=False,
+        default='active'
     )
-
-    google_id: Mapped[str] = mapped_column(
-        VARCHAR(255),
-        nullable=True,
-        unique=True
-    )
-
-    auth_provider: Mapped[str] = mapped_column(
-        VARCHAR(255),
-        nullable=True,
-        default='local'
-    )
-
 
     created_at: Mapped[datetime] = mapped_column(
         DATETIME,
@@ -93,11 +80,6 @@ class User(Base):
         back_populates='user'
     )
 
-    profile = relationship(
-        'Profile',
-        back_populates='user',
-        uselist=False
-    )
 
     created_events = relationship(
         'Event',

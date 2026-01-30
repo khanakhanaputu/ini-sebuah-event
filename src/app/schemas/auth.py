@@ -9,7 +9,7 @@ class TokenOut(BaseModel):
     access_token: str
     token_type: str = "bearer"
     user_id: int
-    username: str
+    full_name: str
     platform_role: str | None = None
 
 
@@ -26,5 +26,3 @@ class MessageOnly(BaseModel):
 
 class GoogleAuthIn(BaseModel):
     id_token: str | None = None  # optional for dev
-    email: EmailStr | None = None
-    username: str | None = None

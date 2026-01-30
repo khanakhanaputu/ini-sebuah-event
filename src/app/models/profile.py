@@ -59,8 +59,4 @@ class Profile(Base):
         nullable=False
     )
 
-    # Relationships
-    user = relationship(
-        'User',
-        back_populates='profile'
-    )
+
